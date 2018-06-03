@@ -27,7 +27,7 @@ public class notesService implements Runnable{
     @Value("{com.abc.autoduty.mail.notesUserName}")
     String notesUserName;
 
-    //@Service(initMethod="init", destroyMethod="destory")
+
 
     ArrayBlockingQueue<MailBody>  mailQueue =new ArrayBlockingQueue<MailBody>(100);
 
@@ -59,7 +59,9 @@ public class notesService implements Runnable{
     public boolean send(MailBody mailBody ){
     try {
         mailDoc = dominoDb.createDocument();
+
         //mailmessage.replaceItemValue("Form", "Memo");
+
         mailDoc.replaceItemValue("Form", mailBody.getForm());
 
         mailDoc.replaceItemValue("Subject", mailBody.getSubject());
